@@ -1,0 +1,34 @@
+{
+    "name": "@moonhare/dom",
+    "version": "0.0.1",
+    "description": "Next generation CSS framework for frontend styling.",
+    "source": "src/index.ts",
+    "main": "dist/moonhare-dom.js",
+    "umd:main": "dist/moonhare-dom.umd.js",
+    "browser": "dist/moonhare-dom.umd.js",
+    "unpkg": "dist/moonhare-dom.umd.js",
+    "jsdelivr": "dist/moonhare-dom.umd.js",
+    "module": "dist/moonhare-dom.esm.js",
+    "exports": {
+        "require": "./dist/moonhare-dom.js",
+        "default": "./dist/moonhare-dom.modern.js"
+    },
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "microbundle --name=moonhareDOM",
+        "dev": "microbundle watch --name=moonhareDOM"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ksenginew/moonhare.git"
+    },
+    "author": "Kavindu Santhusa",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/ksenginew/moonhare/issues"
+    },
+    "homepage": "https://github.com/ksenginew/moonhare#readme",
+    "dependencies": {
+        "@moonhare/core": "workspace:^"
+    }
+}
