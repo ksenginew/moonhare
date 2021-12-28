@@ -16,7 +16,7 @@ export type Style = [
     // at rules
     string[];
     // classname
-    string;
+    string | undefined;
 ];
 
 export interface Options {
