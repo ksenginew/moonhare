@@ -15,8 +15,19 @@ export type Style = [
     string;
     // at rules
     string[];
+] | [
+    // property
+    string;
+    // value
+    string;
+    // important
+    boolean;
+    // selector
+    string;
+    // at rules
+    string[];
     // classname
-    string | undefined;
+    string;
 ];
 
 export interface Options {
