@@ -1,6 +1,5 @@
 import { hash } from './hash';
 import { stringify } from './stringify';
-import { toString } from './toString';
 import type { CSSAttribute, Options } from './types';
 
 export let setup = (options: Partial<Options> = {}): Options => {
@@ -9,7 +8,6 @@ export let setup = (options: Partial<Options> = {}): Options => {
     return Object.assign(
         ctx,
         {
-            toString,
             cache: {},
             sheet: [],
             prefix: '_',
@@ -25,8 +23,8 @@ export let setup = (options: Partial<Options> = {}): Options => {
                         if (ctx.cache[ref]) className = ctx.cache[ref].cls as string;
                         else {
                             className = '.' + ctx.getCls();
-                            rule.cls = className;
-                            rule.sel = rule.sel.replace(/{-}/g, className);
+                            rule[5] = className;
+                            rule[3] = rule[3].replace(/{-}/g, className);
                             ctx.cache[ref] = rule;
                         }
 
