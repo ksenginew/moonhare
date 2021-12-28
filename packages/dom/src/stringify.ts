@@ -1,5 +1,5 @@
 import type { Style } from '@moonhare/core';
-export let toString = ([prop, val, i, sel, at]: Style) => {
+export let stringify = ([prop, val, i, sel, at]: Style) => {
     at.unshift(sel);
     return at.reduce(
         (acc, atRule) => `${atRule}{${acc}}`,

@@ -38,7 +38,6 @@ export interface Options {
     cache: Record<string, Style>;
     sheet: string[];
     prefix: string;
-    count: number;
-    getCls: () => string;
+    cls: () => string;
     style: (style: CSSAttribute) => string;
 }
