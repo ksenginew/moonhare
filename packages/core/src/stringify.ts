@@ -17,7 +17,7 @@ export let stringify = (obj: CSSAttribute, selector = '{-}'): Style[] => {
                 val + '',
                 false,
                 selector,
-                []
+                [] as string[]
             ]);
         }
     };
