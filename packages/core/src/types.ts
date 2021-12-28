@@ -4,31 +4,33 @@ export interface CSSAttribute extends PropertiesFallback, PropertiesHyphenFallba
     [key: string]: CSSAttribute | string | number | (string | number | undefined)[] | undefined;
 }
 
-export type Style = [
-    // property
-    string,
-    // value
-    string,
-    // important
-    boolean,
-    // selector
-    string,
-    // at rules
-    string[],
-] | [
-    // property
-    string,
-    // value
-    string,
-    // important
-    boolean,
-    // selector
-    string,
-    // at rules
-    string[],
-    // classname
-    string,
-];
+export type Style =
+    | [
+          // property
+          string,
+          // value
+          string,
+          // important
+          boolean,
+          // selector
+          string,
+          // at rules
+          string[]
+      ]
+    | [
+          // property
+          string,
+          // value
+          string,
+          // important
+          boolean,
+          // selector
+          string,
+          // at rules
+          string[],
+          // classname
+          string
+      ];
 
 export interface Options {
     add: (styles: Style, index: number) => void;
