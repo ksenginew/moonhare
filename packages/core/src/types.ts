@@ -25,7 +25,7 @@ export type Style = [
     // selector
     string,
     // at rules
-    string[];l,
+    string[],
     // classname
     string,
 ];
