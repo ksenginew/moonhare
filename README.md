@@ -1,3 +1,3 @@
-# moonhare
+# MoonHare
 
-A highly customizable CSS framework for powerful UI development.
+A highly customizable CSS framework for unique UI development.
