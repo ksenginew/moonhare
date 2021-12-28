@@ -4,14 +4,20 @@ export interface CSSAttribute extends PropertiesFallback, PropertiesHyphenFallba
     [key: string]: CSSAttribute | string | number | (string | number | undefined)[] | undefined;
 }
 
-export type Style = {
-    prop: string;
-    val: string;
-    i: boolean;
-    sel: string;
-    cls?: string;
-    at: string[];
-};
+export type Style = [
+    // property
+    string;
+    // value
+    string;
+    // important
+    boolean;
+    // selector
+    string;
+    // at rules
+    string[];
+    // classname
+    string;
+];
 
 export interface Options {
     toString: (style: Style) => string;
