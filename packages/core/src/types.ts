@@ -20,7 +20,6 @@ export type Style = [
 ];
 
 export interface Options {
-    toString: (style: Style) => string;
     add: (styles: Style, index: number) => void;
     remove: (index: number) => void;
     cache: Record<string, Style>;
