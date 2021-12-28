@@ -6,28 +6,28 @@ export interface CSSAttribute extends PropertiesFallback, PropertiesHyphenFallba
 
 export type Style = [
     // property
-    string;
+    string,
     // value
-    string;
+    string,
     // important
-    boolean;
+    boolean,
     // selector
-    string;
+    string,
     // at rules
-    string[];
+    string[],
 ] | [
     // property
-    string;
+    string,
     // value
-    string;
+    string,
     // important
-    boolean;
+    boolean,
     // selector
-    string;
+    string,
     // at rules
-    string[];
+    string[];l,
     // classname
-    string;
+    string,
 ];
 
 export interface Options {
