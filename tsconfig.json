@@ -12,7 +12,7 @@
             "moonhare": ["packages/moonhare/src"],
             "@moonhare/*": ["packages/*/src"]
         },
-        "declaration": true,
+        "declaration": true
     },
     "include": ["packages/*/src"]
 }
