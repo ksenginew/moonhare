@@ -14,3 +14,12 @@ export let getSheet = (target: HTMLElement = document.head) => {
         )
     ).sheet as CSSStyleSheet;
 };
+
+export let getCss = (target: HTMLElement) =>
+    Array.from(getSheet(target).cssRules);
+
+export let clearStyles = (target: HTMLElement) => {
+    let sheet = getSheet(target)
+    while(sheet.length)
+        sheet.deleteRule(0)
+}
