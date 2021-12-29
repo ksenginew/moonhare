@@ -31,13 +31,3 @@ export type Style =
           // classname
           string
       ];
-
-export interface Options {
-    add: (styles: Style, index: number) => void;
-    remove: (index: number) => void;
-    cache: Record<string, Style>;
-    sheet: string[];
-    prefix: string;
-    cls: () => string;
-    style: (style: CSSAttribute) => string;
-}
