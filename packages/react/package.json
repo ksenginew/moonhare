@@ -1,0 +1,13 @@
+{
+    "name": "@moonhare/react",
+    "version": "0.0.1",
+    "description": "MoonHare CSS for React like frameworks.",
+    "main": "dist/moonhare-react.js",
+    "scripts": {},
+    "author": "Kavindu Santhusa",
+    "license": "MIT",
+    "peerDependencies": {
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1"
+    }
+}

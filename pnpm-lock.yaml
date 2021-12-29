@@ -36,6 +36,14 @@ importers:
     dependencies:
       '@moonhare/core': link:../core
 
+  packages/react:
+    specifiers:
+      react: ^17.0.1
+      react-dom: ^17.0.1
+    dependencies:
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+
   website:
     specifiers:
       '@docusaurus/core': 2.0.0-beta.14
