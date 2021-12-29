@@ -1,5 +1,5 @@
 import { Options } from "@moonhare/core";
 
 export interface DOMOptions extends Options {
-    container: HTMLElement;
+    container: HTMLElement || string || CSStyleSheet || string[];
 }
