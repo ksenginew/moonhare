@@ -1,4 +1,4 @@
-import { render } from "./render";
+import { render } from './render';
 
 let ctx = render();
-export default ctx
+export default ctx;

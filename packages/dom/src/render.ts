@@ -1,9 +1,8 @@
-import { Style } from "@moonhare/core";
-import { stringify } from "./stringify";
-import { getSheet } from "./sheet";
-import { DOMOptions } from "./types";
+import { Style } from '@moonhare/core';
+import { stringify } from './stringify';
+import { getSheet } from './sheet';
 
-export let render = (options: Partial<DOMOptions> = {}) => {
+export let render = () => {
     let add = (style: Style, index: number) => getSheet().insertRule(stringify(style), index);
 
     let remove = (index: number) => getSheet().deleteRule(index);

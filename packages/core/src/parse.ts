@@ -6,19 +6,19 @@ import { CSSAttribute, Style } from './types';
  * @param {String} selector
  * @param {String} wrapper
  */
-export let stringify = (obj: CSSAttribute, selector = '{-}'): Style[] => {
+export let parse = (obj: CSSAttribute, selector = '{-}'): Style[] => {
     let blocks: Style[] = [];
 
     let decl = (key: string, val: string | number | undefined) => {
         // Push the line for this property
         if (val != undefined) {
-            blocks.push([
-                (key = key.replace(/[A-Z]/g, '-$&').toLowerCase()),
-                val + '',
-                false,
-                selector,
-                [] as string[]
-            ]);
+            blocks.push({
+                p: key.replace(/[A-Z]/g, '-$&').toLowerCase(),
+                v: val + '',
+                i: false,
+                s: selector,
+                a: [] as string[]
+            });
         }
     };
 
@@ -28,15 +28,15 @@ export let stringify = (obj: CSSAttribute, selector = '{-}'): Style[] => {
         if (val != undefined) {
             // If these are the `@` rule
             if (key[0] == '@')
-                stringify(val as CSSAttribute, selector).forEach((block) => {
-                    block[4].push(key);
+                parse(val as CSSAttribute, selector).forEach((block) => {
+                    block.a.push(key);
                     blocks.push(block);
                 });
             else if (Array.isArray(val)) val.forEach((val) => decl(key, val));
             else if (typeof val == 'object')
                 // Call the parse for this block
                 blocks = blocks.concat(
-                    stringify(
+                    parse(
                         val,
                         selector
                             ? // Go over the selector and replace the matching multiple selectors if any

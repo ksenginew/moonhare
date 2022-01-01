@@ -2,6 +2,6 @@ import { setup } from './setup';
 
 export * from './types';
 
-let ctx = setup();
+let style = setup();
 
-export default ctx;
+export default style;
