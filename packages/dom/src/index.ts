@@ -1,4 +1,4 @@
-import { render } from './render';
+import { setup } from "./setup";
 
-let ctx = render();
-export default ctx;
+export let [style] = setup()
+
