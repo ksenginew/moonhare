@@ -2,13 +2,15 @@ import { CSSAttribute } from '@moonhare/core'
 import { getSheet } from './sheet'
 
 export let setup = (
+    container?: HTMLElement,
     selOrder: (string | RegExp)[] = ['^h', '^f', '^a'],
     atOrder: (string | RegExp)[] = ['^@media']
 ) => {
     let count: number = 0
     let cache: Record<string, string> = {}
-    let sheet = getSheet()
+    let sheet = getSheet(container)
     let ruleList: { s: number }[] = sheet.cssRules as any
+    let insertRule = sheet.insertRule
 
     let insert = (
         ref: string,
@@ -41,7 +43,7 @@ export let setup = (
                 break
             }
         }
-        sheet.insertRule(cssString, index)
+        insertRule(cssString, index)
         ruleList[index].s = score
         cache[ref] = className
     }
