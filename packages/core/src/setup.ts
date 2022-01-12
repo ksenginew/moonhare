@@ -1,5 +1,5 @@
-import { CSSAttribute } from '@moonhare/core'
-import { atRuleOrder, getAtRuleScore, getSelectorScore, selectorOrder } from './order'
+import { CSSAttribute } from './types'
+import { atRuleOrder, getAtRuleScore, getSelectorScore, selectorOrder } from '../../core/src/order'
 import { getSheet } from './sheet'
 import { stringify } from './stringify'
 
@@ -105,5 +105,5 @@ export let setup = (
         return className.trim()
     }
 
-    return [render]
+    return { render }
 }

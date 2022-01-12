@@ -1,1 +1,3 @@
-export type { CSSAttribute } from './types'
+import { setup } from "./setup";
+
+
