@@ -1,16 +1,40 @@
 import { CSSAttribute } from '@moonhare/core'
+import { atRuleOrder, getAtRuleScore, getSelectorScore, selectorOrder } from './order'
 import { getSheet } from './sheet'
+import { stringify } from './stringify'
 
 export let setup = (
     container?: HTMLElement,
-    selOrder: (string | RegExp)[] = ['^h', '^f', '^a'],
-    atOrder: (string | RegExp)[] = ['^@media']
+    selOrder: (string | RegExp)[] = selectorOrder,
+    atOrder: (string | RegExp)[] = atRuleOrder
 ) => {
     let count: number = 0
-    let cache: Record<string, string> = {}
-    let sheet = getSheet(container)
-    let ruleList: { s: number }[] = sheet.cssRules as any
-    let insertRule = sheet.insertRule
+    let scoreList: number[] = []
+    let cache: Record<string, number> = {}
+    let classList: string[] = []
+    let insertRule: (rule: string, index: number) => void
+    let extract: () => string
+    if (typeof window !== 'undefined') {
+        let sheet = getSheet(container)
+        insertRule = sheet.insertRule.bind(sheet)
+        extract = () => {
+            let result = ''
+            while (sheet.cssRules.length) {
+                result += (sheet.cssRules[0] as unknown as CSSRule).cssText
+                sheet.deleteRule(0)
+            }
+            return result
+        }
+    } else {
+        let sheet: string[] = []
+        insertRule = (rule: string, index: number) => sheet.splice(index, 0, rule)
+        extract = () => {
+            let result = sheet.join('')
+            sheet = []
+            return result
+        }
+        return sheet.map
+    }
 
     let insert = (
         ref: string,
@@ -20,36 +44,28 @@ export let setup = (
         atRules: string[]
     ) => {
         if (value == undefined) return
+
         let className = '_' + (count++).toString(36)
-        let score = 0
-        selOrder.forEach((o, i) => {
-            if (selector.match(o)) score += i + 1
-        })
+        let score = getSelectorScore(selector, selOrder) + getAtRuleScore(atRules[0], atOrder)
 
-        atOrder.forEach((o, i) => {
-            if (atRules[0] && atRules[0].match(o)) score += (i + 1) * 100
-        })
-
-        atRules.unshift(selector.replace(/::/g, '.' + className))
-        let cssString = atRules.reduce(
-            (prev, curr) => curr + '{' + prev + '}',
-            property + ':' + value + ';'
-        )
-
-        let index = ruleList.length
-        for (let i = 0, len = ruleList.length; i < len; ++i) {
-            if (ruleList[i].s > score) {
+        let index = scoreList.length
+        for (let i = 0, len = scoreList.length; i < len; ++i) {
+            if (scoreList[i] > score) {
                 index = i
                 break
             }
         }
-        insertRule(cssString, index)
-        ruleList[index].s = score
-        cache[ref] = className
+
+        selector = selector.replace(/::/g, '.' + className)
+        insertRule(stringify(selector, property, value + '', atRules), index)
+
+        scoreList[index] = score
+        classList[index] = className
+        cache[ref] = index
     }
 
     let render = (styles: CSSAttribute, parent: string = '::', atRules: string[] = []) => {
-        let classList = ''
+        let className = ''
 
         // iterate through styles
         for (let key in styles) {
@@ -61,9 +77,8 @@ export let setup = (
             if (typeof value != 'object' || Array.isArray(value)) {
                 // generate a key for cache
                 let ref = key + value + parent + atRules
-
                 // check if we have a cached class
-                if (!cache[ref]) {
+                if (cache[ref]) {
                     // convert camelCase or snake_case to dash-case(or kabob-case)
                     key = key.replace(/_|([A-Z])/g, '-$1').toLowerCase()
 
@@ -71,23 +86,23 @@ export let setup = (
                 }
 
                 // add the class to the list
-                classList += cache[ref] + ' '
+                className += classList[cache[ref]] + ' '
             } else {
                 // atrules
                 if (key[0] === '@') {
                     at.push(key)
-                    classList += render(value as CSSAttribute, parent, at) + ''
+                    className += render(value as CSSAttribute, parent, at) + ''
                 }
 
                 // nested styles
                 else {
-                    classList += render(value, key.replace(/&/g, parent), at) + ' '
+                    className += render(value, key.replace(/&/g, parent), at) + ' '
                 }
             }
         }
 
         // join classes and return
-        return classList.trim()
+        return className.trim()
     }
 
     return [render]

@@ -1,8 +1,6 @@
-import type { Style } from '@moonhare/core';
-export let stringify = ([prop, val, i, sel, at]: Style) => {
-    at.unshift(sel);
-    return at.reduce(
-        (acc, atRule) => `${atRule}{${acc}}`,
-        prop + ':' + val + (i ? ' !important' : '') + ';'
-    );
-};
+let stringify = (selector: string, property: string, value: string, atRules: string[]) => {
+    atRules.unshift(selector)
+    return atRules.reduce((prev, curr) => curr + '{' + prev + '}', property + ':' + value + ';')
+}
+
+export { stringify }
