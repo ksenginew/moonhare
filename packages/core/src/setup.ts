@@ -1,59 +1,68 @@
-import { CSSAttribute } from './types'
+import { CSSAttribute, Style } from './types'
 import { atRuleOrder, getAtRuleScore, getSelectorScore, selectorOrder } from '../../core/src/order'
-import { stringify } from './stringify'
+import { parse } from './parse'
 
 export let setup = (
     selOrder: (string | RegExp)[] = selectorOrder,
     atOrder: (string | RegExp)[] = atRuleOrder
 ) => {
+    // count to generate unique class names.
     let count: number = 0
-    let scoreList: number[] = []
-    let styleList: {
-        s: string
-        p: string
-        v: string
-        a: string[]
-    }[] = []
-    let cache: Record<string, number> = {}
-    let classList: string[] = []
+
+    // JavaScript Map like implementation for style sheet.
+    let sheet: Style[] = []
+    let cache: string[] = []
 
     let render = (styles: CSSAttribute) => {
-        return stringify(styles)
-            .map(({ s: selector, p: property, v: value, a: atRules }) => {
+        return parse(styles)
+            .map((style) => {
+                //
+                let { s: selector, p: property, v: value, a: atRules } = style
                 let ref = selector + property + value + atRules
 
-                let index = cache[ref]
+                // check the cache for the style
+                let index = cache.indexOf(ref)
 
-                if (index) {
-                    let className = '_' + (count++).toString(36)
-                    let score =
-                        getSelectorScore(selector, selOrder) + getAtRuleScore(atRules[0], atOrder)
+                // if the style is not in the cache
+                if (!~index) {
+                    // generate a unique class name. It's base 36 number
+                    let className = (style.c = '_' + (count++).toString(36))
 
-                    let index = scoreList.length
+                    // give marks to atRules
+                    let atRuleScore = (style.r = getAtRuleScore(atRules, atOrder))
+                    // give marks to selector
+                    let score = (style.r = getSelectorScore(
+                        selector.replace(/^\{:\}/, ''),
+                        selOrder
+                    ))
 
-                    for (let i = 0, len = scoreList.length; i < len; ++i) {
-                        if (scoreList[i] > score) {
+                    // set the index to last
+                    index = sheet.length
+
+                    // find the index of the style
+                    for (let i = 0, len = sheet.length; i < len; ++i) {
+                        if (
+                            (sheet[i].r as number) > atRuleScore ||
+                            (sheet[i].m as number) > score
+                        ) {
                             index = i
                             break
                         }
                     }
 
-                    selector = selector.replace(/::/g, '.' + className)
-                    styleList[index] = {
-                        s: selector,
-                        p: property,
-                        v: value + '',
-                        a: atRules
-                    }
-                    scoreList[index] = score
-                    classList[index] = className
-                    cache[ref] = index
+                    // insert the class name to the selector
+                    style.s = selector.replace(/{:}/g, '.' + className)
+
+                    // update the sheet
+                    sheet.splice(index, 0, style)
+                    cache.splice(index, 0, ref)
                 }
 
-                return classList[index]
+                // return the class name
+                return sheet[index].c as string
             })
             .join(' ')
     }
 
-    return { render, styles: styleList }
+    return { render, sheet }
 }

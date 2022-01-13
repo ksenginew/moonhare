@@ -9,4 +9,11 @@ export interface Style {
     p: string
     v: string
     a: string[]
+    m?: number
+    r?: number
+    c?: string
+}
+
+export interface Context {
+    sheet: Style[]
 }

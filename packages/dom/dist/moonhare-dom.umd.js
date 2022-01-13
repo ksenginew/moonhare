@@ -1,2 +1,2 @@
-"function"==typeof define&&define.amd&&define(function(){});
+!function(e,n){"object"==typeof exports&&"undefined"!=typeof module?n(exports):"function"==typeof define&&define.amd?define(["exports"],n):n((e||self).moonhareDOM={})}(this,function(e){var n=function(e,n){return e+"{"+n+"}"};e.render=function(e){document.head.appendChild(Object.assign(document.createElement("style"),{textContent:e.sheet.map(function(e){var t=e.a,o=n(e.s,e.p+":"+e.v);return t.forEach(function(e){return o+=n(e,o)}),o}).join("")}))}});
 //# sourceMappingURL=moonhare-dom.umd.js.map

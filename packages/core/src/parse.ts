@@ -1,12 +1,12 @@
 import { CSSAttribute, Style } from './types'
 
 /**
- * stringifys the object into css, scoped, blocks
+ * parses the object into css, scoped, blocks
  * @param {Object} obj
  * @param {String} selector
  * @param {String} wrapper
  */
-export let stringify = (obj: CSSAttribute, selector = '::') => {
+export let parse = (obj: CSSAttribute, selector = '{:}') => {
     let styles: Style[] = []
 
     for (let key in obj) {
@@ -27,13 +27,13 @@ export let stringify = (obj: CSSAttribute, selector = '::') => {
             val.map(decl)
         } else if (key[0] == '@') {
             // Regular at rule block
-            stringify(val as CSSAttribute, key[1] == 'k' ? '' : selector).forEach((style) => {
+            parse(val as CSSAttribute, key[1] == 'k' ? '' : selector).forEach((style) => {
                 style.a.push(key)
                 styles.push(style)
             })
         } else if (typeof val == 'object') {
             val
-            // Call the stringify for this block
+            // Call the parse for this block
             let newSel = selector
                 ? // Go over the selector and replace the matching multiple selectors if any
                   selector.replace(/([^,])+/g, (sel) => {
@@ -47,7 +47,7 @@ export let stringify = (obj: CSSAttribute, selector = '::') => {
                       })
                   })
                 : key
-            styles = styles.concat(stringify(val, newSel))
+            styles = styles.concat(parse(val, newSel))
         } else {
             decl(val)
         }

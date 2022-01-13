@@ -9,10 +9,12 @@ let getSelectorScore = (selector: string, selOrder: (string | RegExp)[]) => {
     return score
 }
 
-let getAtRuleScore = (atRule: string, atOrder: (string | RegExp)[]) => {
+let getAtRuleScore = (atRules: string[], atOrder: (string | RegExp)[]) => {
     let score = 0
-    atOrder.forEach((o, i) => {
-        if (atRule && atRule.match(o)) score += (i + 1) * 100
+    atRules.forEach((atRule, ii) => {
+        atOrder.forEach((o, i) => {
+            if (atRule && atRule.match(o)) score += (i + 1) * (ii + 1)
+        })
     })
     return score
 }

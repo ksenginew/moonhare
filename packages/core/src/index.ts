@@ -1,5 +1,7 @@
 import { setup } from './setup'
 
-let { render, styles } = setup()
+let { render, sheet } = setup()
 
-export { render, styles }
+export { render, sheet, setup }
+
+export type { Style, Context, CSSAttribute } from './types'

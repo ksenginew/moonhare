@@ -1,2 +1,8 @@
-declare let stringify: (selector: string, property: string, value: string, atRules: string[]) => string;
-export { stringify };
+import { CSSAttribute, Style } from './types';
+/**
+ * stringifys the object into css, scoped, blocks
+ * @param {Object} obj
+ * @param {String} selector
+ * @param {String} wrapper
+ */
+export declare let stringify: (obj: CSSAttribute, selector?: string) => Style[];
