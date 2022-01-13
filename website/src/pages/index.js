@@ -8,10 +8,13 @@ import styles from './index.module.css'
 function HomepageHeader() {
     const { siteConfig } = useDocusaurusContext()
     return (
-        <header className={clsx('hero  hero--primary', styles.heroBanner)}>
+        <header className={clsx('hero  hero--primary', styles.heroBanner, styles.heroMain)}>
             <div className="container">
-                <h1 className="hero__title">{siteConfig.tagline}</h1>
-                <p className="hero__subtitle">test</p>
+                <h1>Build unique websites in minutes using unlimited utilities.</h1>
+                <p className="hero__subtitle">
+                    A utility-first CSS framework packed with classes like flex, pt-4, text-center
+                    and rotate-90 that can be composed to build any design, directly in your markup.
+                </p>
                 <div className={styles.buttons}>
                     <Link
                         className="button button--secondary button--lg button--block"

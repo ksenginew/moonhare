@@ -12,6 +12,11 @@
     margin: auto;
 }
 
+.heroMain {
+    --ifm-hero-background-color: hsl(270, 68%, 85%);
+    --ifm-hero-text-color: hsl(270, 68%, 15%);
+}
+
 @media screen and (max-width: 966px) {
     .heroBanner {
         padding: 2rem;
