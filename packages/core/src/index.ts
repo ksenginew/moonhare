@@ -2,4 +2,4 @@ import { setup } from "./setup";
 
 let { style } = setup();
 
-export { style, styleList };
+export { render, styleList };
