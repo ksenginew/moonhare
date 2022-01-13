@@ -15,8 +15,9 @@
         "typescript": "^4.4.3"
     },
     "scripts": {
-        "build": "pnpm run build -r",
-        "dev": "pnpm run dev --parallel",
+        "build": "pnpm run build -r --filter=!website",
+        "dev": "pnpm run dev --parallel --filter=!website",
+        "typecheck": "tsc --noEmit",
         "test": "jest",
         "lint": "eslint",
         "format": "prettier --write ."

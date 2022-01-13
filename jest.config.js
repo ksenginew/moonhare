@@ -7,4 +7,4 @@ module.exports = {
         moonhare: '<rootDir>/packages/moonhare/src'
     },
     rootDir: __dirname
-};
+}
