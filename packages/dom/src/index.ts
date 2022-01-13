@@ -1,15 +1,16 @@
 import type { Context } from '@moonhare/core'
+import { extract } from './extract'
+import { insert } from './insert'
+import { getSheet } from './sheet'
 
-let wrap = (wrapper: string, toWrap: string) => wrapper + '{' + toWrap + '}'
+interface DOMContext extends Context {
+    extract: () => string
+}
 
-export let render = (ctx: Context) => {
-    document.head.appendChild(
-        Object.assign(document.createElement('style'), {
-            textContent: ctx.sheet.map(({ s: selector, p: property, v: value, a: atRules }) => {
-                let css = wrap(selector, property + ':' + value)
-                atRules.forEach((rule) => (css += wrap(rule, css)))
-                return css
-            }).join('')
-        })
-    )
+export let render = (ctx: Context, container: HTMLElement) => {
+    let sheet = getSheet(container)
+    let domCtx: DOMContext = ctx as DOMContext
+    domCtx.extract = extract.bind(null, sheet)
+    domCtx.listen(insert.bind(null, sheet))
+    return domCtx
 }

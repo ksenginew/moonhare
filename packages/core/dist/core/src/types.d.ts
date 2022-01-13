@@ -7,4 +7,13 @@ export interface Style {
     p: string;
     v: string;
     a: string[];
+    m?: number;
+    r?: number;
+    c?: string;
+}
+export interface Context {
+    render: (styles: CSSAttribute) => string;
+    cache: Record<string, string>;
+    sheet: Style[];
+    listen: (fn: (style: Style) => void) => void;
 }

@@ -15,5 +15,8 @@ export interface Style {
 }
 
 export interface Context {
+    render: (styles: CSSAttribute) => string
+    cache: Record<string, string>
     sheet: Style[]
+    listen: (fn: (style: Style) => void) => void
 }

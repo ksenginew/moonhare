@@ -1,10 +1,7 @@
-import { CSSAttribute } from './types';
+import { CSSAttribute, Style } from './types';
 export declare let setup: (selOrder?: (string | RegExp)[], atOrder?: (string | RegExp)[]) => {
     render: (styles: CSSAttribute) => string;
-    styles: {
-        s: string;
-        p: string;
-        v: string;
-        a: string[];
-    }[];
+    cache: Record<string, string>;
+    sheet: Style[];
+    listen: (fn: (style: Style) => void) => (style: Style) => void;
 };
