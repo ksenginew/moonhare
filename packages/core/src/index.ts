@@ -1,5 +1,5 @@
 import { setup } from "./setup";
 
-let { render } = setup();
+let { render, styleList } = setup();
 
 export { render, styleList };
