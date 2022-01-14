@@ -10,9 +10,9 @@ const config = {
     tagline: 'A highly customizable CSS framework for unique UI development.',
     url: 'https://your-docusaurus-test-site.com',
     baseUrl: '/',
-    onBrokenLinks: 'throw',
+    onBrokenLinks: 'warn',
     onBrokenMarkdownLinks: 'warn',
-    favicon: 'img/favicon.ico',
+    favicon: 'img/favicon.png',
     organizationName: 'ksenginew', // Usually your GitHub org/user name.
     projectName: 'moonhare', // Usually your repo name.
 

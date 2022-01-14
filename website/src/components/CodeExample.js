@@ -45,18 +45,15 @@ let Example = () => {
         </figure>
     )
 }
-let matches = [...source.matchAll(/ css=\{\{[^]+?\}\}/g)]
 
 export let CodeExample = () => {
-    let code = source.replace(/ css=\{\{[^]+?\}\}/g, '')
-
     return (
         <div className={clsx('container')}>
             <div className="row">
                 <div className={clsx('col col--6')}>
                     <Example />
                 </div>
-                <CodeBlock className={clsx('language-jsx', 'col col--6')} children={code} />
+                <CodeBlock className={clsx('language-jsx', 'col col--6')} children={source} />
             </div>
         </div>
     )
