@@ -13,9 +13,31 @@
 }
 
 .heroMain {
-    background-image: linear-gradient(to top right, #fff, #f1e9fb, #fff, #f1e9fb, #fff, #f1e9fb);
+    background-image: linear-gradient(
+        to top right,
+        hsl(0, 0%, 90%),
+        hsl(270, 100%, 90%),
+        hsl(0, 0%, 90%),
+        hsl(270, 100%, 90%),
+        hsl(0, 0%, 90%),
+        hsl(270, 100%, 90%)
+    );
     --ifm-hero-background-color: #fff;
     --ifm-hero-text-color: hsl(270, 68%, 15%);
+}
+
+[data-theme='dark'] .heroMain {
+    background-image: linear-gradient(
+        to top right,
+        hsl(0, 0%, 10%),
+        hsl(270, 100%, 10%),
+        hsl(0, 0%, 10%),
+        hsl(270, 100%, 10%),
+        hsl(0, 0%, 10%),
+        hsl(270, 100%, 10%)
+    );
+    --ifm-hero-background-color: #000;
+    --ifm-hero-text-color: hsl(270, 68%, 85%);
 }
 
 @media screen and (max-width: 966px) {

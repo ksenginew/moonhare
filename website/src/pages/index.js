@@ -12,13 +12,11 @@ function HomepageHeader() {
         <header className={clsx('hero  hero--primary', styles.heroMain)}>
             <div className={styles.main}>
                 <div className={clsx('container', styles.heroBanner)}>
-                    <h1 className="hero__title">
-                        Build unique websites in minutes using unlimited utilities.
-                    </h1>
+                    <h1 className="hero__title">Rapidly build unique sites with MoonHare</h1>
                     <p className="hero__subtitle">
-                        A utility-first CSS framework packed with classes like flex, pt-4,
-                        text-center and rotate-90 that can be composed to build any design, directly
-                        in your markup.
+                        Quickly design and customize radical sites with MoonHare, a highly
+                        customizable front-end open source toolkit, featuring on-demand atomic
+                        css-in-js engine with intigrations for your favorite tools.
                     </p>
                     <div className={styles.buttons}>
                         <Link

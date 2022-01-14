@@ -1,15 +1,9 @@
 .card {
-    background-color: hsl(0, 0%, 90%);
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    background-color: hsl(0, 0%, 85%, 0.1);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
     border-radius: 1rem;
     text-align: center;
     padding: 2rem;
-}
-
-@media (prefers-color-scheme: dark) {
-    .card {
-        background-color: hsl(0, 0%, 20%);
-    }
 }
 
 .cardImage {
