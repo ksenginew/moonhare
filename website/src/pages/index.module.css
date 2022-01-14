@@ -13,7 +13,8 @@
 }
 
 .heroMain {
-    --ifm-hero-background-color: hsl(270, 68%, 85%);
+    background-image: linear-gradient(to top right, #fff, #f1e9fb, #fff, #f1e9fb, #fff, #f1e9fb);
+    --ifm-hero-background-color: #fff;
     --ifm-hero-text-color: hsl(270, 68%, 15%);
 }
 
@@ -27,4 +28,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.main {
+    width: 100%;
 }

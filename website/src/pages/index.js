@@ -1,62 +1,37 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import clsx from 'clsx'
 import Layout from '@theme/Layout'
 import Link from '@docusaurus/Link'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import styles from './index.module.css'
+import { CodeExample } from '../components/CodeExample'
 
 function HomepageHeader() {
     const { siteConfig } = useDocusaurusContext()
     return (
-        <header className={clsx('hero  hero--primary', styles.heroBanner, styles.heroMain)}>
-            <div className="container">
-                <h1>Build unique websites in minutes using unlimited utilities.</h1>
-                <p className="hero__subtitle">
-                    A utility-first CSS framework packed with classes like flex, pt-4, text-center
-                    and rotate-90 that can be composed to build any design, directly in your markup.
-                </p>
-                <div className={styles.buttons}>
-                    <Link
-                        className="button button--secondary button--lg button--block"
-                        to="/docs/intro"
-                    >
-                        Tutorial
-                    </Link>
-                </div>
-            </div>
-        </header>
-    )
-}
-function HomepageContent() {
-    const { siteConfig } = useDocusaurusContext()
-    return (
-        <>
-            <header className={clsx('hero', styles.heroBanner)}>
-                <div className="container">
-                    <h2>Yet another CSS framework! Why?</h2>
-                    <p>
-                        When I heard about atomic CSS I loved that concept. Here I am entering the
-                        competition with an on demand lightweight atomic CSS engine with unlimited
-                        theme.
+        <header className={clsx('hero  hero--primary', styles.heroMain)}>
+            <div className={styles.main}>
+                <div className={clsx('container', styles.heroBanner)}>
+                    <h1 className="hero__title">
+                        Build unique websites in minutes using unlimited utilities.
+                    </h1>
+                    <p className="hero__subtitle">
+                        A utility-first CSS framework packed with classes like flex, pt-4,
+                        text-center and rotate-90 that can be composed to build any design, directly
+                        in your markup.
                     </p>
-                    <div className="avatar avatar--vertical">
-                        <a
-                            className="avatar__photo-link avatar__photo avatar__photo--lg"
-                            href="https://twitter.com/ksenginew"
+                    <div className={styles.buttons}>
+                        <Link
+                            className="button button--primary button--lg button--block"
+                            to="/docs/intro"
                         >
-                            <img
-                                alt="Kavindu Santhusa Twitter Profile"
-                                src="https://github.com/ksenginew.png?size=128"
-                            />
-                        </a>
-                        <div className="avatar__intro">
-                            <div className="avatar__name">Kavindu Santhusa</div>
-                            <small className="avatar__subtitle">Creator of MoonHare CSS</small>
-                        </div>
+                            Tutorial
+                        </Link>
                     </div>
                 </div>
-            </header>
-        </>
+                <CodeExample />
+            </div>
+        </header>
     )
 }
 
@@ -65,9 +40,7 @@ export default function Home() {
     return (
         <Layout title={`${siteConfig.title}`} description={`${siteConfig.tagline}`}>
             <HomepageHeader />
-            <main>
-                <HomepageContent />
-            </main>
+            <main></main>
         </Layout>
     )
 }
