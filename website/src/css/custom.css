@@ -11,8 +11,9 @@
     --ifm-color-primary-darker: #621fa4;
     --ifm-color-primary-darkest: #501a87;
     --ifm-color-primary-light: #7e29d4;
-    --ifm-color-primary-lighter: #8431d8;
+    --ifm-color-primary-lightzer: #8431d8;
     --ifm-color-primary-lightest: #954edd;
+    --ifm-font-color-base: #374151;
 }
 
 .docusaurus-highlight-code-line {
@@ -56,11 +57,23 @@ h6 {
     line-height: 1.75rem;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-weight: normal;
+@media (pointer: fine) {
+    html {
+        scrollbar-width: thin;
+    }
+    html::-webkit-scrollbar {
+        height: var(--ifm-scrollbar-size);
+        width: var(--ifm-scrollbar-size);
+    }
+    html::-webkit-scrollbar-track {
+        background: var(--ifm-scrollbar-track-background-color);
+        border-radius: 10px;
+    }
+    html::-webkit-scrollbar-thumb {
+        background: var(--ifm-scrollbar-thumb-background-color);
+        border-radius: 10px;
+    }
+    html::-webkit-scrollbar-thumb:hover {
+        background: var(--ifm-scrollbar-thumb-hover-background-color);
+    }
 }

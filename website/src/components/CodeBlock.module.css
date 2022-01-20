@@ -1,0 +1,4 @@
+.code pre {
+    max-height: 25rem;
+    overflow: auto;
+}

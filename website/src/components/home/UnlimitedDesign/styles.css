@@ -1,0 +1,14 @@
+.codeTabs .tabs__item {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+}
+
+.codeTabs .margin-vert--md {
+    margin: 0 !important;
+}
+
+.codeTabs .tabs {
+    background-color: rgba(128, 128, 128, 0.1);
+    border-top-left-radius: var(--ifm-global-radius);
+    border-top-right-radius: var(--ifm-global-radius);
+}

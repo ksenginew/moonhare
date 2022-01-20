@@ -5,6 +5,7 @@ import Link from '@docusaurus/Link'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import styles from './index.module.css'
 import { CodeExample } from '../components/CodeExample'
+import { UnlimitedDesign } from '../components/home/UnlimitedDesign'
 
 function HomepageHeader() {
     const { siteConfig } = useDocusaurusContext()
@@ -38,7 +39,9 @@ export default function Home() {
     return (
         <Layout title={`${siteConfig.title}`} description={`${siteConfig.tagline}`}>
             <HomepageHeader />
-            <main></main>
+            <main>
+                <UnlimitedDesign />
+            </main>
         </Layout>
     )
 }

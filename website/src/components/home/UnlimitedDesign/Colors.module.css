@@ -1,0 +1,21 @@
+.row {
+    margin: 0 3rem;
+    border: 1px solid gray;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    color: hsl(240, 100%, 50%);
+}
+
+.row + .row {
+    margin-top: 1rem;
+}
+.rule {
+    display: grid;
+    grid-template-columns: repeat(10, minmax(0, 1fr));
+    gap: 0.5rem;
+}
+
+.tile {
+    aspect-ratio: 1 / 1;
+    border-radius: 0.25rem;
+}

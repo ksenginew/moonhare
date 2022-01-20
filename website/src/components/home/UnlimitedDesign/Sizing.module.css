@@ -1,0 +1,21 @@
+.bar {
+    border-radius: 0.25rem;
+    border: 1px solid lightgray;
+    text-align: center;
+    font-family: var(--ifm-font-family-monospace);
+    font-size: 0.8rem;
+}
+
+.bar::after {
+    content: '|';
+    float: right;
+}
+
+.bar::before {
+    content: '|';
+    float: left;
+}
+
+.bar + .bar {
+    margin-top: 1rem;
+}

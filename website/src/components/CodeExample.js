@@ -4,17 +4,17 @@ import styles from './CodeExample.module.css'
 import clsx from 'clsx'
 
 const source = `<figure css={{
-    ...backgrounds(gray[100]),
-    ...rounded(XL),
-    textAlign: 'center',
-    fontWeight: MEDIUM,
+    background_color: gray[100],
+    border_radius: XL,
+    text_align: 'center',
+    font_weight: MEDIUM,
     [dark]: backgrounds(gray[800])
 }}>
-<img css={{ ...size(rem(6)), ...rounded('100%'), margin: 'auto' }} src="kavindu.png" alt="" />
+<img css={{ ...size(rem(6)), border_radius: '100%', margin: 'auto' }} src="kavindu.png" alt="" />
 <blockquote>
-    “When I heard about atomic CSS I loved that concept. Here I am entering the
-    competition with an on demand lightweight atomic CSS engine with unlimited
-    theme.”
+    “Don't copy-paste tons classes for atomic CSS. Use good old CSS or your
+    favourite preprocessor with MoonHare's utilities to write modular styles. In
+    production you have atomic CSS.”
 </blockquote>
 <figcaption>
     <div css={{ color: sky[500] }}>
@@ -33,9 +33,9 @@ let Example = () => {
             <img className={styles.cardImage} src="https://github.com/ksenginew.png" alt="" />
             <div className={styles.cardContainer}>
                 <blockquote>
-                    “When I heard about atomic CSS I loved that concept. Here I am entering the
-                    competition with an on demand lightweight atomic CSS engine with unlimited
-                    theme.”
+                    “Don't copy-paste tons classes for atomic CSS. Use good old CSS or your
+                    favourite preprocessor with MoonHare's utilities to write modular styles. In
+                    production you have atomic CSS.”
                 </blockquote>
                 <figcaption>
                     <div className={styles.blueText}>Kavindu Santhusa</div>

@@ -15,13 +15,13 @@
 .heroMain {
     background-image: linear-gradient(
         to top right,
-        hsl(0, 0%, 100%),
-        hsl(270, 100%, 95%),
-        hsl(0, 0%, 90%),
+        hsl(0, 0%, 95%),
+        hsl(270, 100%, 90%),
+        hsl(0, 0%, 95%),
         hsl(270, 100%, 85%),
-        hsl(0, 0%, 90%),
-        hsl(270, 100%, 95%),
-        hsl(0, 0%, 100%)
+        hsl(0, 0%, 95%),
+        hsl(270, 100%, 90%),
+        hsl(0, 0%, 95%)
     );
     --ifm-hero-background-color: #fff;
     --ifm-hero-text-color: hsl(270, 68%, 15%);
@@ -30,13 +30,13 @@
 [data-theme='dark'] .heroMain {
     background-image: linear-gradient(
         to top right,
-        hsl(0, 0%, 0%),
-        hsl(270, 100%, 5%),
-        hsl(0, 0%, 10%),
+        hsl(0, 0%, 5%),
+        hsl(270, 100%, 10%),
+        hsl(0, 0%, 5%),
         hsl(270, 100%, 15%),
-        hsl(0, 0%, 10%),
-        hsl(270, 100%, 5%),
-        hsl(0, 0%, 0%)
+        hsl(0, 0%, 5%),
+        hsl(270, 100%, 10%),
+        hsl(0, 0%, 5%)
     );
     --ifm-hero-background-color: #000;
     --ifm-hero-text-color: hsl(270, 68%, 85%);

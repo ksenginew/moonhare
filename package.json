@@ -18,7 +18,7 @@
         "build": "pnpm run build -r",
         "dev": "pnpm run dev --parallel",
         "typecheck": "tsc --noEmit",
-        "test": "jest",
+        "test": "jest --maxWorkers=1",
         "lint": "eslint",
         "format": "prettier --write ."
     },
