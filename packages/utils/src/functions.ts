@@ -37,107 +37,145 @@ type Func<N extends string> = {
 let FN = <N extends string>(name: N) =>
   ((...args: any[]) => name + "(" + args.join() + ")") as Func<N>;
 
-export let methods: {
-  matrix: Func<"matrix">;
-  matrix3d: Func<"matrix3d">;
-  perspective: Func<"perspective">;
-  rotate: Func<"rotate">;
-  rotate3d: Func<"rotate3d">;
-  rotatex: Func<"rotatex">;
-  rotatey: Func<"rotatey">;
-  rotatez: Func<"rotatez">;
-  scale: Func<"scale">;
-  scale3d: Func<"scale3d">;
-  scalex: Func<"scalex">;
-  scaley: Func<"scaley">;
-  scalez: Func<"scalez">;
-  skew: Func<"skew">;
-  skewx: Func<"skewx">;
-  skewy: Func<"skewy">;
-  translate: Func<"translate">;
-  translate3d: Func<"translate3d">;
-  translatex: Func<"translatex">;
-  translatey: Func<"translatey">;
-  translatez: Func<"translatez">;
-  calc: Func<"calc">;
-  clamp: Func<"clamp">;
-  max: Func<"max">;
-  min: Func<"min">;
-  abs: Func<"abs">;
-  acos: Func<"acos">;
-  asin: Func<"asin">;
-  atan: Func<"atan">;
-  atan2: Func<"atan2">;
-  cos: Func<"cos">;
-  exp: Func<"exp">;
-  hypot: Func<"hypot">;
-  log: Func<"log">;
-  mod: Func<"mod">;
-  pow: Func<"pow">;
-  rem: Func<"rem">;
-  round: Func<"round">;
-  sign: Func<"sign">;
-  sin: Func<"sin">;
-  sqrt: Func<"sqrt">;
-  tan: Func<"tan">;
-  blur: Func<"blur">;
-  brightness: Func<"brightness">;
-  contrast: Func<"contrast">;
-  dropShadow: Func<"drop-shadow">;
-  grayscale: Func<"grayscale">;
-  hueRotate: Func<"hue-rotate">;
-  invert: Func<"invert">;
-  opacity: Func<"opacity">;
-  saturate: Func<"saturate">;
-  sepia: Func<"sepia">;
-  color: Func<"color">;
-  colorMix: Func<"color-mix">;
-  colorContrast: Func<"color-contrast">;
-  deviceCmyk: Func<"device-cmyk">;
-  hsl: Func<"hsl">;
-  hsla: Func<"hsla">;
-  hwb: Func<"hwb">;
-  lab: Func<"lab">;
-  lch: Func<"lch">;
-  rgb: Func<"rgb">;
-  rgba: Func<"rgba">;
-  conicGradient: Func<"conic-gradient">;
-  image: Func<"image">;
-  imageSet: Func<"image-set">;
-  linearGradient: Func<"linear-gradient">;
-  radialGradient: Func<"radial-gradient">;
-  repeatingLinearGradiant: Func<"repeating-linear-gradiant">;
-  repeatingRadialGradient: Func<"repeating-radial-gradient">;
-  repeatConicGradiant: Func<"repeat-conic-gradiant">;
-  crossFade: Func<"cross-fade">;
-  element: Func<"element">;
-  paint: Func<"paint">;
-  counter: Func<"counter">;
-  counters: Func<"counters">;
-  symbols: Func<"symbols">;
-  stylistic: Func<"stylistic">;
-  styleset: Func<"styleset">;
-  characterVariant: Func<"character-variant">;
-  swash: Func<"swash">;
-  ornaments: Func<"ornaments">;
-  annotation: Func<"annotation">;
-  circle: Func<"circle">;
-  ellipse: Func<"ellipse">;
-  inset: Func<"inset">;
-  polygon: Func<"polygon">;
-  path: Func<"path">;
-  attr: Func<"attr">;
-  env: Func<"env">;
-  url: Func<"url">;
-  Var: Func<"var">;
-  fitContent: Func<"fit-content">;
-  minmax: Func<"minmax">;
-  repeat: Func<"repeat">;
-} = new Proxy(
-  {},
-  {
-    get(_, name) {
-      return FN(name as string);
-    },
-  }
-) as any;
+let matrix = FN("matrix");
+let matrix3d = FN("matrix3d");
+let perspective = FN("perspective");
+let rotate = FN("rotate");
+let rotate3d = FN("rotate3d");
+let rotatex = FN("rotatex");
+let rotatey = FN("rotatey");
+let rotatez = FN("rotatez");
+let scale = FN("scale");
+let scale3d = FN("scale3d");
+let scalex = FN("scalex");
+let scaley = FN("scaley");
+let scalez = FN("scalez");
+let skew = FN("skew");
+let skewx = FN("skewx");
+let skewy = FN("skewy");
+let translate = FN("translate");
+let translate3d = FN("translate3d");
+let translatex = FN("translatex");
+let translatey = FN("translatey");
+let translatez = FN("translatez");
+let calc = FN("calc");
+let clamp = FN("clamp");
+let max = FN("max");
+let min = FN("min");
+let Blur = FN("blur");
+let brightness = FN("brightness");
+let contrast = FN("contrast");
+let dropShadow = FN("drop-shadow");
+let grayscale = FN("grayscale");
+let hueRotate = FN("hue-rotate");
+let invert = FN("invert");
+let opacity = FN("opacity");
+let saturate = FN("saturate");
+let sepia = FN("sepia");
+let hsl = FN("hsl");
+let hsla = FN("hsla");
+let rgb = FN("rgb");
+let rgba = FN("rgba");
+let conicGradient = FN("conic-gradient");
+let linearGradient = FN("linear-gradient");
+let radialGradient = FN("radial-gradient");
+let repeatingLinearGradiant = FN("repeating-linear-gradiant");
+let repeatingRadialGradient = FN("repeating-radial-gradient");
+let repeatConicGradiant = FN("repeat-conic-gradiant");
+let crossFade = FN("cross-fade");
+let element = FN("element");
+let paint = FN("paint");
+let counter = FN("counter");
+let counters = FN("counters");
+let symbols = FN("symbols");
+let stylistic = FN("stylistic");
+let styleset = FN("styleset");
+let characterVariant = FN("character-variant");
+let swash = FN("swash");
+let ornaments = FN("ornaments");
+let annotation = FN("annotation");
+let circle = FN("circle");
+let ellipse = FN("ellipse");
+let inset = FN("inset");
+let polygon = FN("polygon");
+let path = FN("path");
+let attr = FN("attr");
+let env = FN("env");
+let url = FN("url");
+let Var = FN("var");
+let fitContent = FN("fit-content");
+let minmax = FN("minmax");
+let repeat = FN("repeat");
+
+export {
+  FN,
+  matrix,
+  matrix3d,
+  perspective,
+  rotate,
+  rotate3d,
+  rotatex,
+  rotatey,
+  rotatez,
+  scale,
+  scale3d,
+  scalex,
+  scaley,
+  scalez,
+  skew,
+  skewx,
+  skewy,
+  translate,
+  translate3d,
+  translatex,
+  translatey,
+  translatez,
+  calc,
+  clamp,
+  max,
+  min,
+  Blur,
+  brightness,
+  contrast,
+  dropShadow,
+  grayscale,
+  hueRotate,
+  invert,
+  opacity,
+  saturate,
+  sepia,
+  hsl,
+  hsla,
+  rgb,
+  rgba,
+  conicGradient,
+  linearGradient,
+  radialGradient,
+  repeatingLinearGradiant,
+  repeatingRadialGradient,
+  repeatConicGradiant,
+  crossFade,
+  element,
+  paint,
+  counter,
+  counters,
+  symbols,
+  stylistic,
+  styleset,
+  characterVariant,
+  swash,
+  ornaments,
+  annotation,
+  circle,
+  ellipse,
+  inset,
+  polygon,
+  path,
+  attr,
+  env,
+  url,
+  Var,
+  fitContent,
+  minmax,
+  repeat,
+};
