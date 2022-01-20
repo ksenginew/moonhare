@@ -85,7 +85,7 @@ let ExampleRow = ({ color }: { color: string }) =>
         <div className={styles.rule}>
             {[5, 10, 20, 30, 40, 50, 60, 70, 80, 90].map((s, i) => <ExampleTile key={i} shade={s} color={colors[color]} />)}
         </div>
-        <p className="">
+        <p>
             <small style={{ float: 'left' }}>{color}-50</small>
             <small style={{ float: 'right' }}>{color}-900</small>
         </p>

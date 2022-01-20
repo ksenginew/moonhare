@@ -3,7 +3,6 @@
     border: 1px solid gray;
     border-radius: 0.5rem;
     padding: 0.5rem;
-    color: hsl(240, 100%, 50%);
 }
 
 .row + .row {

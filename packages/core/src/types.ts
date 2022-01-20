@@ -6,17 +6,22 @@ export interface CSSAttribute extends PropertiesFallback, PropertiesHyphenFallba
 
 export interface Style {
     s: string
-    p: string
-    v: string
+    b: ([string, string] | Style)[]
     a: string[]
     m?: number
     r?: number
     c?: string
 }
 
-export interface Context {
-    render: (styles: CSSAttribute) => string
-    cache: Record<string, string>
-    sheet: Style[]
-    listen: (fn: (style: Style) => void) => void
+export interface BaseContext {
+    global: (styles: CSSAttribute) => void
+    comp: (styles: CSSAttribute, cls?: string | undefined) => string
+    css: (styles: CSSAttribute) => string
+    keyframes: (styles: CSSAttribute) => string
+    listen: (fn: (style: Style) => void) => (style: Style) => void
+    extract: () => any
+}
+
+export interface Context extends BaseContext {
+    extract: () => Style[]
 }
